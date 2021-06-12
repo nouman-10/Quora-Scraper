@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  <link href="{% static 'scraper/base.css' %}" rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    function select_all() {
+      $('input[type=checkbox]').prop('checked', true);
+    }
+
+    function deselect_all() {
+      $('input[type=checkbox]').prop('checked', false);
+    }
+  </script>
+  <style>
+    td {
+      padding: 5px !important;
+      font-size: 0.7rem !important;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+        
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'scraper:search_query' %}">New Search</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="">Previous Searches</a>
+          </li>
+
+      </div>
+
+    </div>
+  </nav>
+  <div class="container">
+    {% block body_block %}
+    {% endblock %}
+  </div>
+
+
+</body>
+
+</html>
