@@ -1,0 +1,35 @@
+{% extends "scraper/base.html" %} 
+{% block body_block %}
+<div class="jumbotron">
+    <section class="dark-grey-text">
+        <h2 class="text-center font-weight-bold mb-4 pb-2"></h2>
+        <div style='display: flex;'>
+
+            <table class='table table-striped' style="flex: 0.8;margin-right: 5%;">
+                <thead class='thead-dark'>
+                    <th>Question</th>
+                    {% for stats in questions.0.answers %}
+                    <th>Answer {{ forloop.counter}} </th>
+                    {% endfor %}
+                </thead>
+                {% for question in questions %}
+
+                <tr>
+                    <td>
+                        {{ question.text }}
+                    </td>
+                    {% for stats in question.answers %}
+                    <td>{{ stats.views }} <strong>|</strong> {{ stats.upvoters }} <strong>|</strong> {{ stats.date }}
+                    </td>
+                    {% endfor %}
+                </tr>
+
+                {% endfor %}
+
+            </table>
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

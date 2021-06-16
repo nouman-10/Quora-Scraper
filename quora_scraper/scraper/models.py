@@ -20,8 +20,8 @@ class DataScrape(models.Model):
 
 class Answer(models.Model):
     username = models.TextField()
-    upvoters = models.IntegerField()
-    views = models.IntegerField()
+    upvoters = models.TextField()
+    views = models.TextField()
     answer_date = models.TextField()
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, related_name='answers')

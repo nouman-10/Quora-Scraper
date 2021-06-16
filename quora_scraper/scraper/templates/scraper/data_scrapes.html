@@ -1,0 +1,34 @@
+{% extends "scraper/base.html" %} 
+{% block body_block %}
+<div class="container my-5 py-5 z-depth-1">
+    <h2 class="text-center font-weight-bold mb-4 pb-2">Existing Projects</h2>
+
+
+    <form action="{% url 'scraper:data_scrape_delete' %}" method="POST">
+        {% csrf_token %}
+        <ol>
+
+            {% for scrape in data_scrapes %}
+            <li>
+                <div class="col-lg-7 col-xl-8">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="{{ scrape.id }}" name="{{ scrape.id }}">
+                        <a style='margin-left: 10px' href="{% url 'scraper:data_scrape' scrape.id %}">{{ scrape.query|capfirst }}</a>
+                         - {{ scrape.questions.all|length }} questions - Scrape Date: {{ scrape.scrape_date }}
+                    </label>
+                </div>
+            </li>
+
+            {% endfor %}
+        </ol>
+
+        <hr class="my-3">
+        <button class="btn btn-info btn-primary my-4" type="submit" style='margin-right: 0; margin-left: auto; display: block'>Delete</button>
+    </form>
+
+
+
+</div>
+
+
+{% endblock %}
