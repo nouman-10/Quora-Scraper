@@ -1,7 +1,7 @@
 from selenium import webdriver 
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
-
+import time
 
 class QuoraScraper:
     SCROLL_PAUSE_TIME = 0.5
@@ -100,7 +100,7 @@ class QuoraScraper:
         self.driver.get_url(question['link'])
         answers = self.driver.find_elements_by_xpath("//div[@class='CssComponent-sc-1oskqb9-0 cXjXFI']")[2:]
         previous_length = len(answers)
-        while(previous_length < n_answers+int(0.3*n_answers):
+        while(previous_length < n_answers+int(0.3*n_answers)):
             self.driver.execute_script("scrollBy(0, 2000)")
             self.driver.execute_script("scrollBy(0, -200);")
             time.sleep(1)
